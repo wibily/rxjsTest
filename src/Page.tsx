@@ -1,7 +1,6 @@
 import React from "react";
 import ComponentA from "./ComponentA";
-import { excpetionServiceFeatureFlag } from "./App";
-import { exceptions } from "./ExceptionService";
+import { exceptions, excpetionServiceFeatureFlag } from "./ExceptionService";
 
 const computeOverlapExceptions = (jobs: object[]) => {
   //FE logic to compute certain exceptions goes here

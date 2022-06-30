@@ -12,10 +12,11 @@ const ComponentA = () => {
   }, []);
 
   useEffect(() => {
-    const sub = exceptions.subscribe((exceptionObj) =>
+    const sub = exceptions.subscribe((exceptionObj) => {
       setException(exceptionObj["a"])
+    }
     );
-    return sub.unsubscribe();
+    return () => sub.unsubscribe();
   }, []);
 
   return (

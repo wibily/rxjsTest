@@ -1,5 +1,7 @@
 import { BehaviorSubject } from "rxjs";
-import { excpetionServiceFeatureFlag } from "./App";
+
+
+export const excpetionServiceFeatureFlag = true;
 
 const uuids = new Set<string>();
 export const exceptions = new BehaviorSubject<{ a?: string }>({});
@@ -11,13 +13,13 @@ const API_RESULTS = {
   a: "overlap error from BE"
 };
 
-const fakeAPICall = (req: string[]) =>
-  uuids.has("a") ? Promise.resolve(API_RESULTS) : Promise.resolve({});
+const fakeAPICall = (req: string[]) => {
+  const results = uuids.has("a") ? Promise.resolve(API_RESULTS) : Promise.resolve({});
+  return results;
+}
 
 if (excpetionServiceFeatureFlag) {
-  console.log("loading interval");
   setInterval(() => {
-    console.log("firing interval");
-    // fakeAPICall(Array.from(uuids)).then((results) => exceptions.next(results));
+    fakeAPICall(Array.from(uuids)).then((results) => exceptions.next(results));
   }, 1000);
 }
