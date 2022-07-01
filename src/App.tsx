@@ -6,7 +6,7 @@ import "./ExceptionService";
 export default function App() {
   return (
     <div className="App">
-      <Page allTheJobs={[]} />
+      <Page allTheJobs={['a']} />
     </div>
   );
 }

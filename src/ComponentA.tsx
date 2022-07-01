@@ -1,15 +1,8 @@
 import { useState, useEffect } from "react";
-import { exceptions, registerUuid, removeUuid } from "./ExceptionService";
+import { exceptions } from "./ExceptionService";
 
 const ComponentA = () => {
   const [exception, setException] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    registerUuid("a");
-    return () => {
-      removeUuid("a");
-    };
-  }, []);
 
   useEffect(() => {
     const sub = exceptions.subscribe((exceptionObj) => {
